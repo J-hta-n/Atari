@@ -9,6 +9,7 @@ class Paddle(Turtle):
         self.pu()
         self.goto(x, y)
 
+    #old implementation of paddle movement using keyboard
     # def left(self):
     #     self.goto(self.xcor()-20, self.ycor())
     #

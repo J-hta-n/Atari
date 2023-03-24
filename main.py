@@ -1,5 +1,5 @@
 from ball import Ball
-from bricks import Brickery
+from brickery import Brickery
 from paddle import Paddle
 from scoreboard import Scoreboard
 from turtle import Screen
@@ -17,16 +17,23 @@ LEFT_BOUND = -400
 screen = Screen()
 screen.setup(width=WIDTH,height=HEIGHT)
 screen.bgcolor("black")
-screen.title("Atari Blackout Game, but full of bugs. by Jh :)")
+screen.title("Atari Breakout Game, but full of bugs. by Jh :)")
 screen.tracer(0)
 
 ##### Bind mouse to screen #####
 canvas = screen.getcanvas()
-mouse_x = 0
+mouse_x = 0 #keeps track of the mouse's x-coordinate relative to the screen
 def set_coords(event):
     global mouse_x
     mouse_x = event.x
-canvas.bind('<Motion>', set_coords) #bind event '<Motion>' to trigger the function set_coords
+#bind event '<Motion>' to trigger the function set_coords (every time mouse is moved, its x-coordinate is updated)
+canvas.bind('<Motion>', set_coords)
+
+#old implementation of paddle movement using keyboard instead of binding mouse to screen
+# ##### Bind key press to object & function #####
+# screen.listen()
+# screen.onkeypress(paddle.left, "Left")
+# screen.onkeypress(paddle.right, "Right")
 
 ##### Create screen objects #####
 paddle = Paddle(0, -200)
@@ -38,10 +45,6 @@ for r in range(3):
         brickery.make_brick(-300 + 120*c, 50*r + 50)
 all_bricks = brickery.brick_list
 
-# ##### Bind key press to object & function #####
-# screen.listen()
-# screen.onkeypress(paddle.left, "Left")
-# screen.onkeypress(paddle.right, "Right")
 
 ##### Main program for gameplay #####
 game_on = True
