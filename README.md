@@ -1,3 +1,3 @@
 # Atari
-Simple starter project using Python turtle to create the Atari breakout game. 
+Simple starter project using Python turtle module to create the Atari breakout game. 
 Can be run using Pycharm IDE with Python 3.11 intepreter.
